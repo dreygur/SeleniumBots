@@ -12,6 +12,7 @@ cache: pip
 
 script:
   - python3 twitter.py robot
+  - python3 insta.py
 
 
 notifications:
