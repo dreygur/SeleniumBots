@@ -1,5 +1,5 @@
 # Hello Lazy Peoples!
-[![Build Status](https://travis-ci.org/dreygur/SeleniumBots.svg?branch=master)](https://travis-ci.org/dreygur/SeleniumBots)
+[![Build Status](https://travis-ci.org/dreygur/SeleniumBots.svg?branch=master)](https://travis-ci.org/dreygur/SeleniumBots) [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/dreygur)
 
 ### To set-Up:
 - Create an environment variable file (.env)
