@@ -87,5 +87,7 @@ if __name__ == "__main__":
         print("You must specify the search term...")
     except NoSuchWindowException:
         print("You Closed the window...")
+    except KeyboardInterrupt:
+        print('\nYou choose to exit!\n')
     except WebDriverException:
-        sys.exit()
+        print('You have closed the window...')
