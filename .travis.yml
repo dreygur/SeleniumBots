@@ -11,7 +11,7 @@ python:
 cache: pip
 
 script:
-  - python3 app.py robot
+  - python3 twitter.py robot
 
 
 notifications:
