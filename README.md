@@ -1,5 +1,5 @@
 # Hello Lazy Peoples!
-__Status:__ [![Build Status](https://travis-ci.org/dreygur/SeleniumBots.svg?branch=master)](https://travis-ci.org/dreygur/SeleniumBots)
+[![Build Status](https://travis-ci.org/dreygur/SeleniumBots.svg?branch=master)](https://travis-ci.org/dreygur/SeleniumBots)
 
 ### To set-Up:
 - Create an environment variable file (.env)
