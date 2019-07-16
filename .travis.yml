@@ -1,0 +1,24 @@
+# Tesing Twitter Bot
+
+language: python
+
+os:
+  - linux
+
+python:
+  - 3.7
+
+cache: pip
+
+script:
+  - python3 app.py robot
+
+
+notifications:
+  slack:
+    rooms:
+      - dropnup:x1ZOJDTXefsq1eLGChjXgKhk#general
+      - dropnup:x1ZOJDTXefsq1eLGChjXgKhk#dev
+
+before_script:
+  - python3 -m pip install -r requirements.txt
