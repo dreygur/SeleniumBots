@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from dotenv import load_dotenv, find_dotenv
 import time
 import os
+import sys
 
 # Exceptions
 from selenium.common.exceptions import WebDriverException
@@ -21,9 +22,24 @@ class InstaGram:
         # Initiating
         self.username = username
         self.password = password
-        self.bot = webdriver.Firefox(executable_path='./Drivers/geckodriver')
-        # self.bot.set_window_position(100, 0)
-        # self.bot.set_window_size(800, 600)
+        
+        # Detect Platform
+        if "win" in sys.platform:
+            driver = "driver.exe"
+        elif "linux" in sys.platform:
+            driver = "driver"
+
+        bot = 'firefox'
+
+        # Switch Browser
+        if bot == "chrome":
+            self.bot = webdriver.Chrome(executable_path="./Drivers/chrome"+driver)
+        else:
+            self.bot = webdriver.Firefox(executable_path="./Drivers/gecko"+driver)
+        
+        # Set Window Properties
+        self.bot.set_window_position(0, 0)
+        self.bot.set_window_size(1224, 800)
 
     def login(self):
         bot = self.bot
