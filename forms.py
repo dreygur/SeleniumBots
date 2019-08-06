@@ -47,19 +47,10 @@ def main():
 
         email = bot.find_element_by_xpath('//*[@id="mG61Hd"]/div/div[2]/div[2]/div[1]/div[2]/div/div[1]/div/div[1]/input')
         name = bot.find_element_by_xpath('//*[@id="mG61Hd"]/div/div[2]/div[2]/div[2]/div/div[2]/div/div[1]/div/div[1]/input')
-        checkboxes = ['//*[@id="mG61Hd"]/div/div[2]/div[2]/div[3]/div/div[2]/div/span/div/div[1]/label',
-                        '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[3]/div/div[2]/div/span/div/div[2]/label']
-        ages = ['//*[@id="mG61Hd"]/div/div[2]/div[2]/div[4]/div/div[2]/div/span/div/div[1]/label',
-                '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[4]/div/div[2]/div/span/div/div[2]/label',
-                '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[4]/div/div[2]/div/span/div/div[3]/label',
-                '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[4]/div/div[2]/div/span/div/div[4]/label',
-                '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[4]/div/div[2]/div/span/div/div[5]/label',
-                '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[4]/div/div[2]/div/span/div/div[6]/label']
+        checkboxes = f'//*[@id="mG61Hd"]/div/div[2]/div[2]/div[3]/div/div[2]/div/span/div/div[{random.randint(1, 2)}]/label'
+        ages = f'//*[@id="mG61Hd"]/div/div[2]/div[2]/div[4]/div/div[2]/div/span/div/div[{random.randint(1, 6)}]/label'
         number = bot.find_element_by_xpath('//*[@id="mG61Hd"]/div/div[2]/div[2]/div[5]/div/div[2]/div/div[1]/div/div[1]/input')
-        comments = ['//*[@id="mG61Hd"]/div/div[2]/div[2]/div[6]/div/div[2]/div/span/div/div[1]/label',
-                    '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[6]/div/div[2]/div/span/div/div[2]/label',
-                    '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[6]/div/div[2]/div/span/div/div[3]/label',
-                    '//*[@id="mG61Hd"]/div/div[2]/div[2]/div[6]/div/div[2]/div/span/div/div[4]/label']
+        comments = f'//*[@id="mG61Hd"]/div/div[2]/div[2]/div[6]/div/div[2]/div/span/div/div[{random.randint(1, 4)}]/label'
         submit = bot.find_element_by_xpath('//*[@id="mG61Hd"]/div/div[2]/div[3]/div[1]/div/div')
 
         email.clear()
@@ -68,16 +59,16 @@ def main():
         name.clear()
         name.send_keys(ran(4) + ' ' + ran(5))
 
-        checkbox = bot.find_element_by_xpath(checkboxes[random.randint(0, 1)])
+        checkbox = bot.find_element_by_xpath(checkboxes)
         checkbox.click()
 
-        age = bot.find_element_by_xpath(ages[random.randint(0, 5)])
+        age = bot.find_element_by_xpath(ages)
         age.click()
 
         number.clear()
         number.send_keys('01' + str(random.randint(1000000, 9999999)))
 
-        comment = bot.find_element_by_xpath(comments[random.randint(0,3)])
+        comment = bot.find_element_by_xpath(comments)
         comment.click()
 
         submit.click()
