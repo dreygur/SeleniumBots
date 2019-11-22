@@ -22,7 +22,10 @@ class InstaGram:
         # Initiating
         self.username = username
         self.password = password
-        
+
+        # Counter
+        self.liked = 0
+
         # Detect Platform
         if "win" in sys.platform:
             driver = "driver.exe"
@@ -36,7 +39,7 @@ class InstaGram:
             self.bot = webdriver.Chrome(executable_path="./Drivers/chrome"+driver)
         else:
             self.bot = webdriver.Firefox(executable_path="./Drivers/gecko"+driver)
-        
+
         # Set Window Properties
         self.bot.set_window_position(0, 0)
         self.bot.set_window_size(1224, 800)
@@ -66,7 +69,7 @@ class InstaGram:
         except Exception as e:
             print(e)
             pass
-    
+
     def explore(self):
         # For Automatic explore
         bot = self.bot
@@ -75,7 +78,7 @@ class InstaGram:
         while True:
             bot.execute_script('window.scrollTo(0, document.body.scrollHeight)')
             time.sleep(5)
-    
+
     def browse(self):
         # For Automatic explore
         bot = self.bot
@@ -85,10 +88,15 @@ class InstaGram:
         while True:
             print('Loading more posts')
             bot.execute_script('window.scrollTo(0, document.body.scrollHeight)')
-            # like = bot.find_element_by_class_name('fr66n')
-            # like.click()
-            # print('Post Liked...')
-            time.sleep(5)
+            try:
+                like = bot.find_element_by_class_name('dCJp8')
+                like.click()
+                self.liked += 1
+                print(f'Post Liked!\nTotal Liked: {self.liked}')
+                time.sleep(5)
+            except Exception:
+                print('Post already Liked!')
+                pass
 
 def main():
     username = os.getenv('i_user')
@@ -103,5 +111,7 @@ if __name__ == '__main__':
         main()
     except KeyboardInterrupt:
         print('\nYou choose to exit!\n')
-    except WebDriverException:
-        print('You have closed the window...')
+    except Exception as e:
+        print(e)
+    # except WebDriverException:
+    #     print('You have closed the window...')

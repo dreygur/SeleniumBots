@@ -1,0 +1,2 @@
+inurl:.php?id=
+/mnt/Lab/Lab/Github/SeleniumBots/Resources/xss_payloads.txt
