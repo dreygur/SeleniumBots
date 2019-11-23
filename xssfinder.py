@@ -9,6 +9,10 @@ from urllib.parse import quote
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+
+# Global Variables
+data = mp.Queue()
+
 def loading(title, progress):
     length = 30  # modify this to change the length
     block = int(round(length * progress))
@@ -123,12 +127,10 @@ def main(dork, payload_location):
 
     urls = data.get()
     s_process.join()
-    s_process.close()
 
     # Save the URLS to file
     f_process = mp.Process(target=savetofile, args=(urls,))
     f_process.start()
-    s_process.close()
 
     # Payloads
     if payload_location.startswith("'"):
@@ -137,7 +139,10 @@ def main(dork, payload_location):
         payloads = f.readlines()
 
     # Browser Automation
-    bot = webdriver.Firefox(executable_path="Drivers/geckodriver")
+    if "win" in sys.platform:
+        bot = webdriver.Firefox(executable_path="Drivers/geckodriver.exe")
+    else:
+        bot = webdriver.Firefox(executable_path="Drivers/geckodriver")
     # Set Window Properties
     bot.set_window_position(0, 0)
     bot.set_window_size(1224, 800)
@@ -165,7 +170,6 @@ dP  Yb 8bodP' 8bodP'     88     88 88  Y8 8888Y"  888888 88  Yb
 
     """
     print(banner)
-    data = mp.Queue()
     dork = input("[*] Your Search Query: ")
     payload = input("[*] Payload File: ")
     print()
